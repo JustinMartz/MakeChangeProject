@@ -1,5 +1,6 @@
 # MakeChangeProject
 Week 1 homework project by Justin Martz
+![](./make-change-project.png)
 
 ## Table of contents
 
