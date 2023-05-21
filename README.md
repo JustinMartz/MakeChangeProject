@@ -24,8 +24,8 @@ In the cash register we will calculate the amount of change returned to a custom
 
 ### Technologies used
 
--Java
--Eclipse
+- Java
+- Eclipse
 
 ### What I learned
 
