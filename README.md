@@ -1,6 +1,6 @@
 # MakeChangeProject
-Week 1 homework project by Justin Martz
 ![](./make-change-project.png)
+Week 1 homework project by Justin Martz
 
 ## Table of contents
 
@@ -25,8 +25,8 @@ In the cash register we will calculate the amount of change returned to a custom
 
 ### Technologies used
 
--Java
--Eclipse
+- Java
+- Eclipse
 
 ### What I learned
 
