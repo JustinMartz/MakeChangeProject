@@ -1,5 +1,6 @@
 # MakeChangeProject
 Week 1 homework project by Justin Martz
+![](./make-change-project.png)
 
 ## Table of contents
 
@@ -24,8 +25,8 @@ In the cash register we will calculate the amount of change returned to a custom
 
 ### Technologies used
 
-- Java
-- Eclipse
+-Java
+-Eclipse
 
 ### What I learned
 
@@ -33,4 +34,4 @@ I learned some quirks about typecasting inside a printf() method. I wanted forma
 
 I also got to apply some extensive use of logical operators and precedence in this assignment.
 
-I know this submission is an abomination of if-else statements, way too big, and probably has way too many variables than what are needed, but it works!
+I know this submission is an abomination of if-else statements, and probably way too many variables than what are needed, but it works!
