@@ -33,4 +33,4 @@ I learned some quirks about typecasting inside a printf() method. I wanted forma
 
 I also got to apply some extensive use of logical operators and precedence in this assignment.
 
-I know this submission is an abomination of if-else statements, and probably way too many variables than what are needed, but it works!
+I know this submission is an abomination of if-else statements, way too big, and probably has way too many variables than what are needed, but it works!
