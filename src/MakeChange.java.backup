@@ -1,0 +1,119 @@
+import java.util.Scanner;
+
+public class MakeChange {
+
+	public static void main(String[] args) {
+		Scanner userInput = new Scanner(System.in);
+		double itemPrice, amountTendered, changeOwed;
+		int dollarsOwed = 0;
+		int centsOwed = 0;
+		int twentyCounter = 0, tenCounter = 0, fiveCounter = 0, oneCounter = 0;
+		int quarterCounter = 0, dimeCounter = 0, nickelCounter = 0, pennyCounter = 0;
+
+		System.out.print("What is the price of the potato? $");
+		itemPrice = userInput.nextDouble();
+		System.out.print("And how much money was tendered by the customer? $");
+		amountTendered = userInput.nextDouble();
+
+		if (amountTendered < itemPrice) {
+			saleError(itemPrice - amountTendered);
+		} else if (amountTendered == itemPrice) {
+			System.out.println("Exact amount tendered. Potato transaction complete.");
+		} else {
+			changeOwed = amountTendered - itemPrice;
+			System.out.printf("Customer is owed $%.2f\n", changeOwed);
+			dollarsOwed = (int) changeOwed;
+			centsOwed = (int) ((changeOwed % 1) * 100);
+			while (dollarsOwed > 0) {
+				if (dollarsOwed >= 20) {
+					dollarsOwed -= 20;
+					twentyCounter++;
+					if (twentyCounter == 1 && dollarsOwed < 20) {
+						System.out.print("Hand the customer 1 twenty");
+					} else if (twentyCounter > 1 && dollarsOwed <= 20) {
+						System.out.print("Hand the customer " + twentyCounter + " twenties");
+					}
+				} else if (dollarsOwed >= 10) {
+					dollarsOwed -= 10;
+					tenCounter++;
+					if (twentyCounter == 0) {										// If twenty doesn't exist, position first
+						System.out.print("Hand the customer 1 ten");
+//						tenPosition = 0;
+					} else if (twentyCounter > 0 && dollarsOwed > 0){				// If twenty exists and change exists, position = middle
+						System.out.print(", 1 ten");
+//						tenPosition = 1;
+					} else if (twentyCounter > 0 && centsOwed == 0){				// If twenty exists and no change, position = last
+						System.out.print(" and 1 ten");
+//						tenPosition = 2;
+					}
+				} else if (dollarsOwed >= 5) {
+					dollarsOwed -= 5;
+					fiveCounter++;
+					if ( (twentyCounter > 0 || tenCounter > 0) && centsOwed == 0) {
+//						fivePosition = 2;
+						System.out.print(" and 1 five");
+					} else if (twentyCounter > 0 || tenCounter > 0) {
+//						fivePosition = 1;
+						System.out.print(", 1 five");
+					} else {
+//						fivePosition = 0;
+						System.out.print("Hand the customer 1 five");
+					}
+						
+				} else if (dollarsOwed >= 1) {
+					if (dollarsOwed == 1 && twentyCounter == 0 && tenCounter == 0 && fiveCounter == 0) {
+						System.out.print("Hand the customer 1 dollar");
+						dollarsOwed = 0;
+					} else if (dollarsOwed > 1 && twentyCounter == 0 && tenCounter == 0 && fiveCounter == 0) {
+						System.out.print("Hand the customer " + dollarsOwed + " dollars");
+						dollarsOwed = 0;
+					} else if (dollarsOwed == 1 && twentyCounter > 1 || tenCounter > 1 || fiveCounter > 1) { 	// middle and single
+						System.out.print(", 1 dollar");
+					} else if (dollarsOwed > 1 && twentyCounter > 1 || tenCounter > 1 || fiveCounter > 1) {		// middle and multiples
+						System.out.print(", " + dollarsOwed + " dollars");
+						dollarsOwed = 0;
+					} else if (dollarsOwed == 1 && centsOwed == 0) {
+						System.out.print(" and 1 dollar");
+					}
+				}
+			}
+			
+			
+			
+			while (centsOwed > 0) {
+				if (centsOwed >= 25) {
+					System.out.println("Quarter");
+					centsOwed -= 25;
+					quarterCounter++;
+				} else if (centsOwed >= 10) {
+					System.out.println("Dime");
+					centsOwed -= 10;
+				} else if (centsOwed >= 5) {
+					System.out.println("Nickel");
+					centsOwed -= 5;
+				} else if (centsOwed >= 1) {
+					System.out.println("Penny");
+					centsOwed -= 1;
+				}
+
+			}
+
+			if (quarterCounter == 1) {
+				System.out.print(quarterCounter + " quarter");
+			}
+			if (quarterCounter > 1) {
+				System.out.print(quarterCounter + " quarters");
+			}
+
+		}
+
+		userInput.close();
+
+	}
+
+	public static void saleError(double cashNeeded) {
+		System.out.println("\n******POTATO SITUATION******");
+		System.out.printf("\tDo not sell the potato! You still need $%.2f\n", cashNeeded);
+		System.out.println("******POTATO SITUATION******");
+	}
+}
